@@ -1,0 +1,23 @@
+@import './components/todo-item.scss';
+@import './components/btn-delete.scss';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.wrapper {
+  padding-top: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.form {
+  margin-bottom: 30px;
+}

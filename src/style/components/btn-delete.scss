@@ -1,0 +1,10 @@
+.btn-delete {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  background: teal;
+  color: white;
+  &:hover {
+    background: tomato;
+  }
+}
