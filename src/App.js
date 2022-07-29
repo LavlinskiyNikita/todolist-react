@@ -1,17 +1,26 @@
-import React, {useState, useMemo} from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import MyButton from "./component/UI/button/Mubutton"
 import Myinput from "./component/UI/input/Myinput";
 import TodoList from "./component/todoList";
 
+const getLocalStorage = () => {
+  let posts = localStorage.getItem("list")
+  if (posts) {
+    return (posts = JSON.parse(localStorage.getItem("list")))
+  } else {
+    return []
+  }
+} 
+
 function App() {
-  const [posts, setPosts] = useState([
-    {id: 1, title: "name one", description: "descroption one"},
-    {id: 2, title: "name two", description: "descroption two"},
-    {id: 3, title: "name tfree", description: "descroption tfree"},
-  ]);
+  const [posts, setPosts] = useState(getLocalStorage());
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(posts))
+  }, [posts])
 
   const addToDoList = (e) => {
     e.preventDefault() 
@@ -20,9 +29,7 @@ function App() {
       title,
       description
     };
-    localStorage
     setPosts([...posts, newToDo]);
-
     setTitle('')
     setDescription('')
   }
